@@ -1,0 +1,3 @@
+- hosts: ctf
+  roles:
+    - ctf

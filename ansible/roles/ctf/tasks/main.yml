@@ -1,0 +1,28 @@
+---
+# tasks file for ctf
+- name: Download Ghidra
+  get_url:
+    url: https://www.ghidra-sre.org/ghidra_9.1.2_PUBLIC_20200212.zip
+    dest: /tmp/ghidra.zip
+
+- name: Unzip Ghidra
+  unarchive:
+    src: /tmp/ghidra.zip
+    dest: ~/Downloads/
+
+- name: Download JDK
+  get_url:
+    url: https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.deb 
+    dest: /tmp/jdk.deb
+
+- name: Install JDK
+  become: yes
+  apt:
+    deb: /tmp/jdk.deb 
+
+# For future. Use apt_packages file to list out all packages needed. None for now.
+#- name: Install required apt packages
+#  become: yes
+#  apt: name={{ item }} state=installed
+#  with_file: 
+#    - apt_packages 
