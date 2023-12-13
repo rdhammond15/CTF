@@ -18,6 +18,11 @@ set laststatus=2
 
 set nu
 
+" search highlighting settings
+set hlsearch
+hi Search ctermbg=blue
+noremap / :let @/=""<CR>/
+
 " default autocommand used for all files
 au BufNewFile,BufRead *
   \ set tabstop=4 |
